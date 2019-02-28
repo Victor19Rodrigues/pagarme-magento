@@ -110,6 +110,16 @@
 </div>
 <script type="text/javascript">
 (function(window, document) {
+
+  let generateScriptEvent;
+
+  if (!generateScriptEvent) {
+    const pagarmeDiv = get('#payment_form_pagarme_creditcard')
+    pagarmeDiv.addEventListener('keyup', tryGenerateCardHash)
+
+    generateScriptEvent = true;
+  }
+
   const findParentForm = node => {
     if (node.tagName === 'FORM') return node
 
